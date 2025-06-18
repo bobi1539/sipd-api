@@ -34,7 +34,7 @@ public abstract class AbstractMasterService extends AbstractBaseService {
         entity.setDeleted(false);
     }
 
-    protected <T> Specification<T> getSpecificationIsDeleted(Boolean isDeleted) {
-        return SpecificationHelper.objectEquals(AbstractMasterEntity.FIELD_IS_DELETED, isDeleted);
+    protected <T> Specification<T> getSpecIsDeleted(Boolean isDeleted) {
+        return SpecificationHelper.objectEquals(AbstractMasterEntity.F_IS_DELETED, isDeleted);
     }
 }

@@ -13,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 
-import java.util.Objects;
 import java.util.function.Supplier;
 
 public abstract class AbstractBaseService {
@@ -25,7 +24,7 @@ public abstract class AbstractBaseService {
     }
 
     protected Sort sortByIsDeletedAndIdAsc() {
-        Sort sortIsDeleted = PageHelper.sortByColumnAsc(AbstractMasterEntity.FIELD_IS_DELETED);
+        Sort sortIsDeleted = PageHelper.sortByColumnAsc(AbstractMasterEntity.F_IS_DELETED);
         Sort sortId = PageHelper.sortByColumnAsc(FIELD_ID);
         return sortIsDeleted.and(sortId);
     }

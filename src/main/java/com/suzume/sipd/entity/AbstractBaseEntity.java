@@ -40,10 +40,10 @@ public abstract class AbstractBaseEntity {
     @Column(name = "updated_by_name")
     protected String updatedByName;
 
-    public static final String FIELD_CREATED_AT = "createdAt";
-    public static final String FIELD_UPDATED_AT = "updatedAt";
-    public static final String FIELD_CREATED_BY = "createdBy";
-    public static final String FIELD_UPDATED_BY = "updatedBy";
-    public static final String FIELD_CREATED_BY_NAME = "createdByName";
-    public static final String FIELD_UPDATED_BY_NAME = "updatedByName";
+    public static final String F_CREATED_AT = "createdAt";
+    public static final String F_UPDATED_AT = "updatedAt";
+    public static final String F_CREATED_BY = "createdBy";
+    public static final String F_UPDATED_BY = "updatedBy";
+    public static final String F_CREATED_BY_NAME = "createdByName";
+    public static final String F_UPDATED_BY_NAME = "updatedByName";
 }

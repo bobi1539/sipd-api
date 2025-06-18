@@ -19,5 +19,5 @@ public abstract class AbstractMasterEntity extends AbstractBaseEntity {
     @Column(name = "is_deleted")
     protected boolean isDeleted = false;
 
-    public static final String FIELD_IS_DELETED = "isDeleted";
+    public static final String F_IS_DELETED = "isDeleted";
 }
