@@ -47,4 +47,7 @@ public class MBusinessTrip extends AbstractMasterEntity {
     @OneToMany(mappedBy = TTripSegment.F_BUSINESS_TRIP, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TTripSegment> tripSegments = new ArrayList<>();
 
+    @OneToMany(mappedBy = TTripAttachmentFile.F_BUSINESS_TRIP, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TTripAttachmentFile> attachmentFiles = new ArrayList<>();
+
 }
