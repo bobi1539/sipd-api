@@ -1,7 +1,8 @@
 package com.suzume.sipd.entity;
 
-import com.suzume.sipd.constant.enums.BusinessTripType;
 import com.suzume.sipd.constant.Constant;
+import com.suzume.sipd.constant.enums.BusinessTripStatus;
+import com.suzume.sipd.constant.enums.BusinessTripType;
 import com.suzume.sipd.constant.enums.ParticipantType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,10 @@ public class MBusinessTrip extends AbstractMasterEntity {
     private String approvalFile;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "business_trip_status")
+    private BusinessTripStatus businessTripStatus;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "business_trip_type")
     private BusinessTripType businessTripType;
 
@@ -49,5 +54,7 @@ public class MBusinessTrip extends AbstractMasterEntity {
 
     @OneToMany(mappedBy = TTripAttachmentFile.F_BUSINESS_TRIP, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TTripAttachmentFile> attachmentFiles = new ArrayList<>();
+
+    public static final String F_PURPOSE = "purpose";
 
 }

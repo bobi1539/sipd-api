@@ -29,6 +29,18 @@ public final class Constant {
     public static final String BUDGET_NAME_REQUIRED = "Nama Anggaran Tidak Boleh Kosong";
     public static final String BUDGET_PRICE_REQUIRED = "Harga Anggaran Tidak Boleh Kosong";
     public static final String BUDGET_QUANTITY_REQUIRED = "Kuantitas Anggaran Tidak Boleh Kosong";
+    public static final String TRIP_PURPOSE_REQUIRED = "Tujuan Perjalanan Dinas Tidak Boleh Kosong";
+    public static final String TRIP_APPROVAL_FILE_REQUIRED = "File Persetujuan Perjalanan Dinas Tidak Boleh Kosong";
+    public static final String TRIP_TYPE_REQUIRED = "Jenis Perjalanan Dinas Tidak Boleh Kosong";
+    public static final String TRIP_PARTICIPANT_TYPE_REQUIRED = "Jenis Peserta Perjalanan Dinas Tidak Boleh Kosong";
+    public static final String TRIP_PARTICIPANT_REQUIRED = "Peserta Perjalanan Dinas Tidak Boleh Kosong";
+    public static final String TRIP_SEGMENT_REQUIRED = "Segmen Perjalanan Dinas Tidak Boleh Kosong";
+    public static final String EMPLOYEE_ID_REQUIRED = "Id Karyawan Tidak Boleh Kosong";
+    public static final String SEQUENCE_REQUIRED = "Urutan Tidak Boleh Kosong";
+    public static final String DEPARTURE_DATE_REQUIRED = "Tanggal Berangkat Tidak Boleh Kosong";
+    public static final String TRANSPORTATION_MODE_REQUIRED = "Moda Transportasi Tidak Boleh Kosong";
+    public static final String DEPARTURE_CITY_ID_REQUIRED = "Id Kota Keberangkatan Tidak Boleh Kosong";
+    public static final String DESTINATION_CITY_ID_REQUIRED = "Id Kota Tujuan Tidak Boleh Kosong";
 
     public static final String USER = "Data User";
     public static final String BUDGET = "Data Anggaran";

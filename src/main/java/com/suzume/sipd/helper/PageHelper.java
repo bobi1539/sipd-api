@@ -15,6 +15,10 @@ public final class PageHelper {
         return Sort.by(columnName).ascending();
     }
 
+    public static Sort sortByColumnDesc(String columnName) {
+        return Sort.by(columnName).descending();
+    }
+
     public static PageRequest buildPageRequest(int pageNumber, int pageSize, Sort sort) {
         return PageRequest.of(getPageNumber(pageNumber), pageSize, sort);
     }
