@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: sipd-api
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${SIPD_DB_USERNAME}
+    password: ${SIPD_DB_PASSWORD}
+    url: jdbc:postgresql://${SIPD_DB_HOST}:${SIPD_DB_PORT}/${SIPD_DB_NAME}
+  jpa:
+    show-sql: ${SIPD_SHOW_SQL}
+    hibernate:
+      ddl-auto: ${SIPD_DDL_AUTO}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  task:
+    scheduling:
+      time-zone: Asia/Jakarta
+server:
+  forward-headers-strategy: framework
+  port: ${SIPD_PORT}
+  host: ${SIPD_HOST}
+app-config:
+  pathFile: ${SIPD_PATH_FILE}
+  jwtSecret: ${SIPD_JWT_SECRET}
+  jwtExpiredDuration: ${SIPD_JWT_EXPIRED_DURATION}
+springdoc:
+  swagger-ui:
+    doc-expansion: none
