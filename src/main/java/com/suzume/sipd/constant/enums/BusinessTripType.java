@@ -1,6 +1,9 @@
-package com.suzume.sipd.constant;
+package com.suzume.sipd.constant.enums;
 
-public enum BusinessTripType {
+import lombok.Getter;
+
+@Getter
+public enum BusinessTripType implements LabeledEnum {
 
     DOMESTIC("Perjalanan Dinas Dalam Negeri (PDDN)"),
     ABROAD("Perjalanan Dinas Luar Negeri (PDLN)");
@@ -10,4 +13,5 @@ public enum BusinessTripType {
     BusinessTripType(String label) {
         this.label = label;
     }
+
 }

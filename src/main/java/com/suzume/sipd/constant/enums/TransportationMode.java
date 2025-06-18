@@ -1,6 +1,9 @@
-package com.suzume.sipd.constant;
+package com.suzume.sipd.constant.enums;
 
-public enum TransportationMode {
+import lombok.Getter;
+
+@Getter
+public enum TransportationMode implements LabeledEnum {
 
     PLANE("Pesawat"),
     TRAIN("Kereta API"),

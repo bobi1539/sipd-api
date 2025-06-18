@@ -1,6 +1,6 @@
 package com.suzume.sipd.service.impl;
 
-import com.suzume.sipd.constant.GlobalMessage;
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import com.suzume.sipd.entity.LogAuth;
 import com.suzume.sipd.entity.MUser;
 import com.suzume.sipd.exception.BusinessException;

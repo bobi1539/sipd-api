@@ -1,6 +1,6 @@
 package com.suzume.sipd.service;
 
-import com.suzume.sipd.constant.GlobalMessage;
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import com.suzume.sipd.exception.BusinessException;
 import com.suzume.sipd.helper.PageHelper;
 import com.suzume.sipd.helper.StringHelper;

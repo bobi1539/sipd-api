@@ -1,6 +1,6 @@
 package com.suzume.sipd.entity;
 
-import com.suzume.sipd.constant.PaymentMethod;
+import com.suzume.sipd.constant.enums.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

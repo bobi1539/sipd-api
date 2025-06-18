@@ -1,6 +1,6 @@
 package com.suzume.sipd.exception;
 
-import com.suzume.sipd.constant.GlobalMessage;
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 

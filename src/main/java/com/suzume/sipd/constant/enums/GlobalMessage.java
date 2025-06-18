@@ -1,5 +1,6 @@
-package com.suzume.sipd.constant;
+package com.suzume.sipd.constant.enums;
 
+import com.suzume.sipd.constant.Constant;
 import org.springframework.http.HttpStatus;
 
 public enum GlobalMessage {

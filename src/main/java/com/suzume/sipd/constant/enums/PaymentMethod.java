@@ -1,6 +1,9 @@
-package com.suzume.sipd.constant;
+package com.suzume.sipd.constant.enums;
 
-public enum PaymentMethod {
+import lombok.Getter;
+
+@Getter
+public enum PaymentMethod implements LabeledEnum {
 
     REIMBURSEMENT("Reimburse"),
     PREPAYMENT("Bayar Dimuka");

@@ -1,6 +1,9 @@
-package com.suzume.sipd.constant;
+package com.suzume.sipd.constant.enums;
 
-public enum ParticipantType {
+import lombok.Getter;
+
+@Getter
+public enum ParticipantType implements LabeledEnum {
 
     SOLO("Sendiri"),
     GROUP("Kelompok");

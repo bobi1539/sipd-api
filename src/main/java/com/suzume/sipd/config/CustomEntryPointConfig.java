@@ -3,7 +3,7 @@ package com.suzume.sipd.config;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.suzume.sipd.constant.Constant;
-import com.suzume.sipd.constant.GlobalMessage;
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import com.suzume.sipd.model.response.BaseResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

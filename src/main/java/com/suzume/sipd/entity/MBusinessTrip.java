@@ -1,8 +1,8 @@
 package com.suzume.sipd.entity;
 
-import com.suzume.sipd.constant.BusinessTripType;
+import com.suzume.sipd.constant.enums.BusinessTripType;
 import com.suzume.sipd.constant.Constant;
-import com.suzume.sipd.constant.ParticipantType;
+import com.suzume.sipd.constant.enums.ParticipantType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

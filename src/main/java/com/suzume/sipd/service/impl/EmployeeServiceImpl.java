@@ -7,7 +7,7 @@ import com.suzume.sipd.model.dto.Header;
 import com.suzume.sipd.model.dto.Search;
 import com.suzume.sipd.model.response.EmployeeResponse;
 import com.suzume.sipd.repository.EmployeeRepository;
-import com.suzume.sipd.service.AbstractService;
+import com.suzume.sipd.service.AbstractMasterService;
 import com.suzume.sipd.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class EmployeeServiceImpl extends AbstractService implements EmployeeService {
+public class EmployeeServiceImpl extends AbstractMasterService implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 

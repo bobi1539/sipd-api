@@ -1,6 +1,6 @@
 package com.suzume.sipd.helper;
 
-import com.suzume.sipd.constant.GlobalMessage;
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import com.suzume.sipd.exception.BusinessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

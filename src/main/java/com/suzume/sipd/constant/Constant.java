@@ -1,5 +1,6 @@
 package com.suzume.sipd.constant;
 
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import com.suzume.sipd.exception.BusinessException;
 
 public final class Constant {

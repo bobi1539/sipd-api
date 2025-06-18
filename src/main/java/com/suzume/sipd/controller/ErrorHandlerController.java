@@ -1,7 +1,7 @@
 package com.suzume.sipd.controller;
 
 import com.suzume.sipd.constant.Constant;
-import com.suzume.sipd.constant.GlobalMessage;
+import com.suzume.sipd.constant.enums.GlobalMessage;
 import com.suzume.sipd.exception.BusinessException;
 import com.suzume.sipd.model.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;

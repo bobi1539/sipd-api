@@ -1,6 +1,6 @@
 package com.suzume.sipd.entity;
 
-import com.suzume.sipd.constant.TransportationMode;
+import com.suzume.sipd.constant.enums.TransportationMode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
