@@ -19,6 +19,8 @@ public class BudgetResponse extends AbstractMasterEntityResponse {
     private String name;
     private BigDecimal price;
     private Integer quantity;
+    private BigDecimal used;
+    private BigDecimal remaining;
     private BigDecimal total;
 
     public static BudgetResponse build(MBudget budget) {
@@ -28,6 +30,8 @@ public class BudgetResponse extends AbstractMasterEntityResponse {
                 .name(budget.getName())
                 .price(budget.getPrice())
                 .quantity(budget.getQuantity())
+                .used(budget.getUsed())
+                .remaining(budget.getRemaining())
                 .total(budget.getTotal())
                 .build();
         setMasterEntity(response, budget);

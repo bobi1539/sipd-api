@@ -8,6 +8,9 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,8 +35,8 @@ public class MBudget extends AbstractMasterEntity {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Transient
-    private BigDecimal total;
+    @OneToMany(mappedBy = TTripExpense.F_BUDGET)
+    private List<TTripExpense> tripExpenses = new ArrayList<>();
 
     public static final String F_NAME = "name";
 
@@ -42,4 +45,14 @@ public class MBudget extends AbstractMasterEntity {
         return price.multiply(BigDecimal.valueOf(quantity));
     }
 
+    public BigDecimal getUsed() {
+        return tripExpenses.stream()
+                .map(TTripExpense::getTotal)
+                .filter(Objects::nonNull)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal getRemaining() {
+        return getTotal().subtract(getUsed());
+    }
 }

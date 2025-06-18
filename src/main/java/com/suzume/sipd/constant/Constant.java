@@ -45,4 +45,5 @@ public final class Constant {
     public static final int DEFAULT_PAGE = 0;
     public static final int DEFAULT_SIZE = 10;
     public static final String DOT = ".";
+    public static final String TEXT = "TEXT";
 }

@@ -24,18 +24,18 @@ public abstract class AbstractBaseEntity {
     @Column(name = "created_at", updatable = false)
     protected Timestamp createdAt;
 
+    @Column(name = "created_by", updatable = false)
+    protected Long createdBy;
+
+    @Column(name = "created_by_name", updatable = false)
+    protected String createdByName;
+
     @UpdateTimestamp
     @Column(name = "updated_at")
     protected Timestamp updatedAt;
 
-    @Column(name = "created_by", updatable = false)
-    protected Long createdBy;
-
     @Column(name = "updated_by")
     protected Long updatedBy;
-
-    @Column(name = "created_by_name", updatable = false)
-    protected String createdByName;
 
     @Column(name = "updated_by_name")
     protected String updatedByName;
