@@ -12,7 +12,7 @@ import com.suzume.sipd.model.response.*;
 import com.suzume.sipd.repository.BusinessTripRepository;
 import com.suzume.sipd.service.AbstractMasterService;
 import com.suzume.sipd.service.BusinessTripService;
-import com.suzume.sipd.service.handler.participant.TripParticipantHandler;
+import com.suzume.sipd.service.handler.participant.AbstractTripParticipantHandler;
 import com.suzume.sipd.service.handler.participant.TripParticipantHandlerRegistry;
 import com.suzume.sipd.service.handler.segment.TripSegmentHandler;
 import lombok.AllArgsConstructor;
@@ -66,7 +66,7 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
         ParticipantType participantType = request.getParticipantType();
         businessTrip.setParticipantType(participantType);
 
-        TripParticipantHandler tripParticipantHandler = tripParticipantHandlerRegistry.getHandler(participantType);
+        AbstractTripParticipantHandler tripParticipantHandler = tripParticipantHandlerRegistry.getHandler(participantType);
         businessTrip.setTripParticipants(tripParticipantHandler.handle(businessTrip, request.getTripParticipants()));
 
         businessTrip.setTripSegments(tripSegmentHandler.create(businessTrip, request.getTripSegments()));

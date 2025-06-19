@@ -10,15 +10,15 @@ import java.util.Map;
 @Service
 public class TripParticipantHandlerRegistry {
 
-    private final Map<ParticipantType, TripParticipantHandler> handlerMap = new EnumMap<>(ParticipantType.class);
+    private final Map<ParticipantType, AbstractTripParticipantHandler> handlerMap = new EnumMap<>(ParticipantType.class);
 
-    public TripParticipantHandlerRegistry(List<TripParticipantHandler> handlers) {
-        for (TripParticipantHandler handler : handlers) {
+    public TripParticipantHandlerRegistry(List<AbstractTripParticipantHandler> handlers) {
+        for (AbstractTripParticipantHandler handler : handlers) {
             handlerMap.put(handler.getType(), handler);
         }
     }
 
-    public TripParticipantHandler getHandler(ParticipantType type) {
+    public AbstractTripParticipantHandler getHandler(ParticipantType type) {
         return handlerMap.get(type);
     }
 
