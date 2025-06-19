@@ -25,6 +25,7 @@ public class BusinessTripSimpleResponse {
     private String tripPlace;
     private String status;
     private String statusColor;
+    private boolean isDeleted;
 
     public static BusinessTripSimpleResponse build(MBusinessTrip businessTrip) {
         if (businessTrip == null) return null;
@@ -36,6 +37,7 @@ public class BusinessTripSimpleResponse {
                 .tripPlace(getTripPlace(businessTrip.getTripSegments()))
                 .status(businessTrip.getBusinessTripStatus().label)
                 .statusColor(businessTrip.getBusinessTripStatus().color)
+                .isDeleted(businessTrip.isDeleted())
                 .build();
     }
 

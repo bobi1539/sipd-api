@@ -46,6 +46,7 @@ public final class Constant {
     public static final String BUDGET = "Data Anggaran";
     public static final String CITY = "Data Kota";
     public static final String EMPLOYEE = "Data Karyawan";
+    public static final String BUSINESS_TRIP = "Data Perjalanan Dinas";
 
     public static final String ERROR = "Error : {}";
     public static final String ID = "id";

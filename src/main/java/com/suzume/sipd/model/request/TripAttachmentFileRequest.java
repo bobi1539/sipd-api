@@ -1,7 +1,6 @@
 package com.suzume.sipd.model.request;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -9,5 +8,5 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 @Builder
 public class TripAttachmentFileRequest {
-    private MultipartFile attachmentFile;
+    private String attachmentFile;
 }

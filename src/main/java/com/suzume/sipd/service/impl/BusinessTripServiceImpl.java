@@ -1,5 +1,6 @@
 package com.suzume.sipd.service.impl;
 
+import com.suzume.sipd.constant.Constant;
 import com.suzume.sipd.constant.enums.BusinessTripType;
 import com.suzume.sipd.constant.enums.ParticipantType;
 import com.suzume.sipd.constant.enums.PaymentMethod;
@@ -9,6 +10,8 @@ import com.suzume.sipd.helper.PageHelper;
 import com.suzume.sipd.helper.SpecificationHelper;
 import com.suzume.sipd.model.dto.Header;
 import com.suzume.sipd.model.dto.Search;
+import com.suzume.sipd.model.request.BusinessTripRequest;
+import com.suzume.sipd.model.response.BusinessTripDetailResponse;
 import com.suzume.sipd.model.response.BusinessTripOptionsResponse;
 import com.suzume.sipd.model.response.BusinessTripSimpleResponse;
 import com.suzume.sipd.model.response.OptionResponse;
@@ -27,6 +30,7 @@ import org.springframework.stereotype.Service;
 public class BusinessTripServiceImpl extends AbstractMasterService implements BusinessTripService {
 
     private final BusinessTripRepository businessTripRepository;
+    private static final String DIRECTORY = "business-trip";
 
     @Override
     public BusinessTripOptionsResponse getOptions() {
@@ -46,6 +50,41 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
         return businessTrips.map(BusinessTripSimpleResponse::build);
     }
 
+    @Override
+    public BusinessTripDetailResponse findById(Long id, Header header) {
+        return toResponse(findByIdEntity(id, header));
+    }
+
+    @Override
+    public BusinessTripDetailResponse create(BusinessTripRequest request, Header header) {
+        return null;
+    }
+
+    @Override
+    public BusinessTripDetailResponse update(Long id, BusinessTripRequest request, Header header) {
+        return null;
+    }
+
+    @Override
+    public BusinessTripDetailResponse delete(Long id, Header header) {
+        return null;
+    }
+
+    @Override
+    public BusinessTripDetailResponse restore(Long id, Header header) {
+        return null;
+    }
+
+    @Override
+    public MBusinessTrip findByIdEntity(Long id, Header header) {
+        return businessTripRepository.findById(id).orElseThrow(notFoundException(Constant.BUSINESS_TRIP));
+    }
+
+    @Override
+    public String getDirectory() {
+        return DIRECTORY;
+    }
+
     private Specification<MBusinessTrip> getSpec(Search search) {
         Specification<MBusinessTrip> spec = SpecificationHelper.stringLike(MBusinessTrip.F_PURPOSE, search.getValue());
         return spec.and(getSpecIsDeleted(search.getIsDeleted()));
@@ -59,5 +98,9 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
         Sort sortIsDeleted = PageHelper.sortByColumnAsc(MBusinessTrip.F_IS_DELETED);
         Sort sortId = PageHelper.sortByColumnDesc(FIELD_ID);
         return sortIsDeleted.and(sortId);
+    }
+
+    private BusinessTripDetailResponse toResponse(MBusinessTrip businessTrip) {
+        return BusinessTripDetailResponse.build(businessTrip);
     }
 }

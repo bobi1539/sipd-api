@@ -16,6 +16,10 @@ spring:
   task:
     scheduling:
       time-zone: Asia/Jakarta
+  servlet:
+    multipart:
+      max-file-size: ${SIPD_MAX_FILE_SIZE}
+      max-request-size: ${SIPD_MAX_REQUEST_SIZE}
 server:
   forward-headers-strategy: framework
   port: ${SIPD_PORT}

@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class BusinessTripRequest {
     @NotNull(message = Constant.TRIP_PURPOSE_REQUIRED)
     private String purpose;
 
-    private MultipartFile approvalFile;
+    private String approvalFile;
 
     @NotNull(message = Constant.TRIP_TYPE_REQUIRED)
     private BusinessTripType businessTripType;
