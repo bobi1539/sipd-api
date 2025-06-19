@@ -17,6 +17,8 @@ public final class Constant {
     public static final String FILE_NOT_VALID = "File Tidak Valid";
     public static final String FILE_NOT_ALLOWED = "File Tidak Diizinkan";
     public static final String FILE_DOESNT_EXIST = "File Tidak Tersedia";
+    public static final String TRIP_PARTICIPANT_NOT_VALID = "Peserta Perjalanan Dinas Tidak Valid";
+    public static final String TRIP_SEGMENT_NOT_VALID = "Segment Perjalanan Dinas Tidak Valid";
     public static final String UNAUTHORIZED = "Unauthorized";
     public static final String FORBIDDEN = "Forbidden";
     public static final String CANNOT_INSTANCE_FINAL_CLASS = "Cannot Instance Final Class";

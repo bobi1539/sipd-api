@@ -8,6 +8,7 @@ import com.suzume.sipd.model.request.BusinessTripRequest;
 import com.suzume.sipd.model.response.BusinessTripDetailResponse;
 import com.suzume.sipd.model.response.BusinessTripOptionsResponse;
 import com.suzume.sipd.model.response.BusinessTripSimpleResponse;
+import com.suzume.sipd.model.response.GetDirectoryResponse;
 import com.suzume.sipd.service.BusinessTripService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -77,6 +78,11 @@ public class BusinessTripController {
             @Parameter(hidden = true) @ModelAttribute Header header
     ) {
         return businessTripService.restore(id, header);
+    }
+
+    @GetMapping("/directory")
+    public GetDirectoryResponse getDirectory() {
+        return businessTripService.getDirectory();
     }
 
 }

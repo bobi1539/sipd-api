@@ -34,6 +34,7 @@ public class BusinessTripDetailResponse extends AbstractMasterEntityResponse {
         BusinessTripDetailResponse response = BusinessTripDetailResponse.builder()
                 .id(businessTrip.getId())
                 .purpose(businessTrip.getPurpose())
+                .approvalFile(businessTrip.getApprovalFile())
                 .businessTripStatus(businessTrip.getBusinessTripStatus())
                 .businessTripType(businessTrip.getBusinessTripType())
                 .participantType(businessTrip.getParticipantType())

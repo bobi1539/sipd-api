@@ -7,6 +7,7 @@ import com.suzume.sipd.model.request.BusinessTripRequest;
 import com.suzume.sipd.model.response.BusinessTripDetailResponse;
 import com.suzume.sipd.model.response.BusinessTripOptionsResponse;
 import com.suzume.sipd.model.response.BusinessTripSimpleResponse;
+import com.suzume.sipd.model.response.GetDirectoryResponse;
 import org.springframework.data.domain.Page;
 
 public interface BusinessTripService {
@@ -27,6 +28,6 @@ public interface BusinessTripService {
 
     MBusinessTrip findByIdEntity(Long id, Header header);
 
-    String getDirectory();
+    GetDirectoryResponse getDirectory();
 
 }

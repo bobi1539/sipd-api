@@ -21,6 +21,8 @@ public class BusinessTripRequest {
     @NotNull(message = Constant.TRIP_PURPOSE_REQUIRED)
     private String purpose;
 
+    @NotBlank(message = Constant.TRIP_APPROVAL_FILE_REQUIRED)
+    @NotNull(message = Constant.TRIP_APPROVAL_FILE_REQUIRED)
     private String approvalFile;
 
     @NotNull(message = Constant.TRIP_TYPE_REQUIRED)

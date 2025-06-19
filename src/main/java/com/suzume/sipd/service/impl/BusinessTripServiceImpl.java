@@ -1,23 +1,20 @@
 package com.suzume.sipd.service.impl;
 
 import com.suzume.sipd.constant.Constant;
-import com.suzume.sipd.constant.enums.BusinessTripType;
-import com.suzume.sipd.constant.enums.ParticipantType;
-import com.suzume.sipd.constant.enums.PaymentMethod;
-import com.suzume.sipd.constant.enums.TransportationMode;
+import com.suzume.sipd.constant.enums.*;
 import com.suzume.sipd.entity.MBusinessTrip;
 import com.suzume.sipd.helper.PageHelper;
 import com.suzume.sipd.helper.SpecificationHelper;
 import com.suzume.sipd.model.dto.Header;
 import com.suzume.sipd.model.dto.Search;
 import com.suzume.sipd.model.request.BusinessTripRequest;
-import com.suzume.sipd.model.response.BusinessTripDetailResponse;
-import com.suzume.sipd.model.response.BusinessTripOptionsResponse;
-import com.suzume.sipd.model.response.BusinessTripSimpleResponse;
-import com.suzume.sipd.model.response.OptionResponse;
+import com.suzume.sipd.model.response.*;
 import com.suzume.sipd.repository.BusinessTripRepository;
 import com.suzume.sipd.service.AbstractMasterService;
 import com.suzume.sipd.service.BusinessTripService;
+import com.suzume.sipd.service.handler.participant.TripParticipantHandler;
+import com.suzume.sipd.service.handler.participant.TripParticipantHandlerRegistry;
+import com.suzume.sipd.service.handler.segment.TripSegmentHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +27,8 @@ import org.springframework.stereotype.Service;
 public class BusinessTripServiceImpl extends AbstractMasterService implements BusinessTripService {
 
     private final BusinessTripRepository businessTripRepository;
+    private final TripParticipantHandlerRegistry tripParticipantHandlerRegistry;
+    private final TripSegmentHandler tripSegmentHandler;
     private static final String DIRECTORY = "business-trip";
 
     @Override
@@ -57,7 +56,24 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
 
     @Override
     public BusinessTripDetailResponse create(BusinessTripRequest request, Header header) {
-        return null;
+        MBusinessTrip businessTrip = MBusinessTrip.builder().build();
+        setDeleted(businessTrip, header);
+        businessTrip.setPurpose(request.getPurpose());
+        businessTrip.setApprovalFile(request.getApprovalFile());
+        businessTrip.setBusinessTripStatus(BusinessTripStatus.CONCEPT);
+        businessTrip.setBusinessTripType(request.getBusinessTripType());
+
+        ParticipantType participantType = request.getParticipantType();
+        businessTrip.setParticipantType(participantType);
+
+        TripParticipantHandler tripParticipantHandler = tripParticipantHandlerRegistry.getHandler(participantType);
+        businessTrip.setTripParticipants(tripParticipantHandler.handle(businessTrip, request.getTripParticipants()));
+
+        businessTrip.setTripSegments(tripSegmentHandler.create(businessTrip, request.getTripSegments()));
+
+        businessTrip = businessTripRepository.save(businessTrip);
+
+        return toResponse(businessTrip);
     }
 
     @Override
@@ -67,12 +83,22 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
 
     @Override
     public BusinessTripDetailResponse delete(Long id, Header header) {
-        return null;
+        MBusinessTrip businessTrip = findByIdEntity(id, header);
+
+        if (businessTrip.isDeleted()) {
+            hardDelete(businessTripRepository, businessTrip);
+            return toResponse(businessTrip);
+        }
+
+        softDelete(businessTripRepository, businessTrip, header);
+        return toResponse(businessTrip);
     }
 
     @Override
     public BusinessTripDetailResponse restore(Long id, Header header) {
-        return null;
+        MBusinessTrip businessTrip = findByIdEntity(id, header);
+        restoreData(businessTripRepository, businessTrip, header);
+        return toResponse(businessTrip);
     }
 
     @Override
@@ -81,8 +107,8 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
     }
 
     @Override
-    public String getDirectory() {
-        return DIRECTORY;
+    public GetDirectoryResponse getDirectory() {
+        return GetDirectoryResponse.builder().directoryName(DIRECTORY).build();
     }
 
     private Specification<MBusinessTrip> getSpec(Search search) {
