@@ -12,6 +12,7 @@ import com.suzume.sipd.model.response.*;
 import com.suzume.sipd.repository.BusinessTripRepository;
 import com.suzume.sipd.service.AbstractMasterService;
 import com.suzume.sipd.service.BusinessTripService;
+import com.suzume.sipd.service.handler.attachment.TripAttachmentFileHandler;
 import com.suzume.sipd.service.handler.participant.AbstractTripParticipantHandler;
 import com.suzume.sipd.service.handler.participant.TripParticipantHandlerRegistry;
 import com.suzume.sipd.service.handler.segment.TripSegmentHandler;
@@ -29,6 +30,7 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
     private final BusinessTripRepository businessTripRepository;
     private final TripParticipantHandlerRegistry tripParticipantHandlerRegistry;
     private final TripSegmentHandler tripSegmentHandler;
+    private final TripAttachmentFileHandler tripAttachmentFileHandler;
     private static final String DIRECTORY = "business-trip";
 
     @Override
@@ -62,14 +64,13 @@ public class BusinessTripServiceImpl extends AbstractMasterService implements Bu
         businessTrip.setApprovalFile(request.getApprovalFile());
         businessTrip.setBusinessTripStatus(BusinessTripStatus.CONCEPT);
         businessTrip.setBusinessTripType(request.getBusinessTripType());
-
-        ParticipantType participantType = request.getParticipantType();
-        businessTrip.setParticipantType(participantType);
-
-        AbstractTripParticipantHandler tripParticipantHandler = tripParticipantHandlerRegistry.getHandler(participantType);
-        businessTrip.setTripParticipants(tripParticipantHandler.handle(businessTrip, request.getTripParticipants()));
-
+        businessTrip.setParticipantType(request.getParticipantType());
         businessTrip.setTripSegments(tripSegmentHandler.create(businessTrip, request.getTripSegments()));
+        businessTrip.setAttachmentFiles(tripAttachmentFileHandler.create(businessTrip, request.getTripAttachmentFiles()));
+
+        AbstractTripParticipantHandler tripParticipantHandler = tripParticipantHandlerRegistry
+                .getHandler(request.getParticipantType());
+        businessTrip.setTripParticipants(tripParticipantHandler.handle(businessTrip, request));
 
         businessTrip = businessTripRepository.save(businessTrip);
 

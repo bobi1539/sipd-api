@@ -45,6 +45,15 @@ public class TripSegmentHandlerImpl extends AbstractBaseHandler implements TripS
         if (ListHelper.isEmpty(requests) || requests.size() < 2) {
             throw new BusinessException(GlobalMessage.TRIP_SEGMENT_NOT_VALID);
         }
+
+        for (int i = 1; i < requests.size(); i++) {
+            TripSegmentRequest departure = requests.get(i - 1);
+            TripSegmentRequest destination = requests.get(i);
+
+            if (departure.getDepartureDate().isAfter(destination.getDepartureDate())) {
+                throw new BusinessException(GlobalMessage.TRIP_SEGMENT_NOT_VALID);
+            }
+        }
     }
 
     private MCity getCityById(Long id, Header header) {

@@ -22,4 +22,13 @@ public final class LocalDateHelper {
         return localDate.format(formatter);
     }
 
+    public static String todMMMMYYYYFormat(LocalDate localDate) {
+        if (localDate == null) return "";
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
+                "d MMMM yyyy", new Locale("id", "ID")
+        );
+        return localDate.format(formatter);
+    }
+
 }

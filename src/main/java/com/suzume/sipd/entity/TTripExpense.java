@@ -1,5 +1,6 @@
 package com.suzume.sipd.entity;
 
+import com.suzume.sipd.constant.enums.ExpenseType;
 import com.suzume.sipd.constant.enums.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,10 @@ public class TTripExpense extends AbstractBaseEntity {
     @Column(name = "payment_method")
     private PaymentMethod paymentMethod;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "expense_type")
+    private ExpenseType expenseType;
+
     @ManyToOne
     @JoinColumn(name = "trip_participant_id")
     private TTripParticipant tripParticipant;
@@ -51,5 +56,24 @@ public class TTripExpense extends AbstractBaseEntity {
     public BigDecimal getTotal() {
         if (unitPrice == null || quantity == null) return BigDecimal.ZERO;
         return unitPrice.multiply(BigDecimal.valueOf(quantity));
+    }
+
+    public static TTripExpense clone(TTripExpense source, TTripParticipant participant) {
+        return TTripExpense.builder()
+                .id(source.getId())
+                .description(source.getDescription())
+                .unitPrice(source.getUnitPrice())
+                .quantity(source.getQuantity())
+                .paymentMethod(source.getPaymentMethod())
+                .expenseType(source.getExpenseType())
+                .tripParticipant(participant)
+                .budget(source.getBudget())
+                .createdAt(source.getCreatedAt())
+                .createdBy(source.getCreatedBy())
+                .createdByName(source.getCreatedByName())
+                .updatedAt(source.getUpdatedAt())
+                .updatedBy(source.getUpdatedBy())
+                .updatedByName(source.getUpdatedByName())
+                .build();
     }
 }
