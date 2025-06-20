@@ -1,5 +1,6 @@
 package com.suzume.sipd.entity;
 
+import com.suzume.sipd.helper.ListHelper;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,6 +47,7 @@ public class MBudget extends AbstractMasterEntity {
     }
 
     public BigDecimal getUsed() {
+        if (ListHelper.isEmpty(tripExpenses)) return BigDecimal.ZERO;
         return tripExpenses.stream()
                 .map(TTripExpense::getTotal)
                 .filter(Objects::nonNull)
