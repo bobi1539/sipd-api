@@ -10,6 +10,7 @@ import com.suzume.sipd.model.response.BudgetResponse;
 import com.suzume.sipd.repository.BudgetRepository;
 import com.suzume.sipd.service.AbstractMasterService;
 import com.suzume.sipd.service.BudgetService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -51,6 +52,7 @@ public class BudgetServiceImpl extends AbstractMasterService implements BudgetSe
         return toResponse(save(budget));
     }
 
+    @Transactional
     @Override
     public BudgetResponse delete(Long id, Header header) {
         MBudget budget = findByIdEntity(id, header);
