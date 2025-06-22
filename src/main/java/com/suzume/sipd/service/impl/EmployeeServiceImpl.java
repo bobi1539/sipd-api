@@ -40,7 +40,8 @@ public class EmployeeServiceImpl extends AbstractMasterService implements Employ
     }
 
     private Specification<MEmployee> getSpec(Search search) {
-        return SpecificationHelper.stringLike(MEmployee.F_NAME, search.getValue());
+        Specification<MEmployee> spec = SpecificationHelper.stringLike(MEmployee.F_NAME, search.getValue());
+        return spec.and(getSpecIsDeleted(search.getIsDeleted()));
     }
 
     private EmployeeResponse toResponse(MEmployee employee) {
